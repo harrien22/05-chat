@@ -106,7 +106,7 @@ mod tests {
         let password = "Hunter42";
         let input = SigninUser::new(email, password);
         let ret = signin_handler(State(state), Json(input))
-            .await?
+            .await
             .into_response();
         assert_eq!(ret.status(), StatusCode::FORBIDDEN);
         let body = ret.into_body().collect().await?.to_bytes();
